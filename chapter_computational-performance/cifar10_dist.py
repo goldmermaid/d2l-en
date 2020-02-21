@@ -44,29 +44,29 @@ npx.set_np()
 ## Only do it once, rather than on multiple workers
 #########################################################################################
 
-# demo = True
+demo = True
 
-# d2l.DATA_HUB['cifar10_tiny'] = (d2l.DATA_URL + 'kaggle_cifar10_tiny.zip',
-#                                 '2068874e4b9a9f0fb07ebe0ad2b29754449ccacd')
+d2l.DATA_HUB['cifar10_tiny'] = (d2l.DATA_URL + 'kaggle_cifar10_tiny.zip',
+                                '2068874e4b9a9f0fb07ebe0ad2b29754449ccacd')
 
-# if demo:
-#     data_dir = d2l.download_extract('cifar10_tiny')
-#     train_data_size = 800
-#     batch_size = 1
-# else:
-#     data_dir = 'data/'
-#     train_data_size = 50000
-#     batch_size_per_gpu = 128  # 64 images in a batch
-#     gpus_per_machine = 2
-#     batch_size = batch_size_per_gpu * gpus_per_machine
+if demo:
+    data_dir = d2l.download_extract('cifar10_tiny')
+    train_data_size = 800
+    batch_size = 1
+else:
+    data_dir = 'data/'
+    train_data_size = 50000
+    batch_size_per_gpu = 128  # 64 images in a batch
+    gpus_per_machine = 2
+    batch_size = batch_size_per_gpu * gpus_per_machine
 
 
-# def reorg_cifar10_data(data_dir, valid_ratio):
-#     labels = d2l.read_csv_labels(data_dir + 'trainLabels.csv')
-#     d2l.reorg_train_valid(data_dir, labels, valid_ratio)
-#     d2l.reorg_test(data_dir)
+def reorg_cifar10_data(data_dir, valid_ratio):
+    labels = d2l.read_csv_labels(data_dir + 'trainLabels.csv')
+    d2l.reorg_train_valid(data_dir, labels, valid_ratio)
+    d2l.reorg_test(data_dir)
 
-# reorg_cifar10_data(data_dir, valid_ratio = 0)
+reorg_cifar10_data(data_dir, valid_ratio = 0)
 
 #########################################################################################
 
@@ -192,6 +192,7 @@ def resnet18(num_classes):
     return net
 
 
+
 # Load the training and test data
 transform_train = gluon.data.vision.transforms.Compose([
     # Magnify the image to a square of 40 pixels in both height and width
@@ -292,6 +293,8 @@ num_epochs, lr, wd = 1, 0.1, 5e-4
 lr_period, lr_decay  = 80, 0.1
 num_classes = 10
 # net = get_net(ctx)
+
+
 
 net = resnet18(num_classes)
 net.collect_params().initialize(mx.init.Xavier(), ctx=ctx)
