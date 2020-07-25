@@ -44,13 +44,13 @@ we may wish to align "i" in the hypothesis with "i" in the premise,
 and align "tired" in the hypothesis with "sleep" in the premise.
 Likewise, we may wish to align "i" in the premise with "i" in the hypothesis,
 and align "need" and "sleep" in the premise with "tired" in the hypothesis.
-Note that such alignment is *soft* using weighted average,
+Note that such alignment is *soft* alignment using weighted average,
 where ideally large weights are associated with the words to be aligned.
 For ease of demonstration, :numref:`fig_nli_attention` shows such alignment in a *hard* way.
 
 Now we describe the soft alignment using attention mechanisms in more detail.
-Denote by $\mathbf{A} = (\mathbf{a}_1, \ldots, \mathbf{a}_m)$
-and $\mathbf{B} = (\mathbf{b}_1, \ldots, \mathbf{b}_n)$ the premise and hypothesis, 
+Denote $\mathbf{A} = (\mathbf{a}_1, \ldots, \mathbf{a}_m)$
+and $\mathbf{B} = (\mathbf{b}_1, \ldots, \mathbf{b}_n)$ as the premise and hypothesis, 
 whose number of words are $m$ and $n$, respectively,
 where $\mathbf{a}_i, \mathbf{b}_j \in \mathbb{R}^{d}$ ($i = 1, \ldots, m, j = 1, \ldots, n$) is a $d$-dimensional word embedding vector.
 For soft alignment, we compute the attention weights $e_{ij} \in \mathbb{R}$ as
