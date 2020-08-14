@@ -11,8 +11,7 @@ service providers and is an important source of revenue.  This chapter will intr
 ## Collaborative Filtering
 
 We start the journey with the important concept in recommender systems---collaborative filtering
-(CF), which was first coined by the Tapestry system :cite:`Goldberg.Nichols.Oki.ea.1992`, referring to "people collaborate to help one another perform the filtering process  in order to handle the large amounts of email and messages posted to newsgroups". This term has been enriched with more senses. In a broad sense, it is the process of
-filtering for information or patterns using techniques involving collaboration among multiple users, agents, and data sources. CF has many forms and numerous CF methods proposed since its advent.  
+(CF), which was first coined by the Tapestry system :cite:`Goldberg.Nichols.Oki.ea.1992`, referring to "people collaborate to help one another perform the filtering process  in order to handle the large amounts of email and messages posted to newsgroups". This term has been enriched with more senses. In a broad sense, it is the process of filtering for information or patterns using techniques involving collaboration among multiple users, agents, and data sources. CF has many forms and numerous CF methods proposed since its advent.  
 
 Overall, CF techniques can be categorized into: memory-based CF, model-based CF, and their hybrid :cite:`Su.Khoshgoftaar.2009`. Representative memory-based CF techniques are nearest neighbor-based CF such as user-based CF and item-based CF :cite:`Sarwar.Karypis.Konstan.ea.2001`.  Latent factor models such as matrix factorization are examples of model-based CF.  Memory-based CF has limitations in dealing with sparse and large-scale data since it computes the similarity values based on common items.  Model-based methods become more popular with its
 better capability in dealing with sparsity and scalability.  Many model-based CF approaches can be extended with neural networks, leading to more flexible and scalable models with the computation acceleration in deep learning :cite:`Zhang.Yao.Sun.ea.2019`.  In general, CF only uses the user-item interaction data to make predictions and recommendations. Besides CF, content-based and context-based recommender systems are also useful in incorporating the content descriptions of items/users and contextual signals such as timestamps and locations.  Obviously, we may need to adjust the model types/structures when different input data is available.
@@ -33,8 +32,10 @@ A number of recommendation tasks have been investigated in the past decades.  Ba
 
 ## Summary
 
-* Recommender systems are important for individual users and industries. Collaborative filtering is a key concept in recommendation.
-* There are two types of feedbacks: implicit feedback and explicit feedback.  A number of recommendation tasks have been explored during the last decade.
+* Recommender systems are information filtering tools that facilitate personalized services and provide tailored experience to individual users. 
+* Collaborative filtering (CF) is a key technique in recommender system. It includes memory-based CF, model-based CF, and their hybrid.
+* To model individual preference, two types of feedbacks are collected: explicit feedback and implicit feedback. Explicit feedback is proactive response from the user, while implicit feedback is collected by user's unintended behavior.
+* A number of recommendation tasks have been explored during the last decade.
 
 ## Exercises
 
