@@ -48,9 +48,9 @@ print(f'matrix sparsity: {sparsity:f}')
 print(data.head(5))
 ```
 
-We can see that each line consists of four columns, including "user id" $1$ to $943$, "item id" $1$ to $1682$, "rating" $1$ to $5$ and "timestamp". We can construct an interaction matrix of size $n \times m$, where $n$ and $m$ are the number of users and the number of items respectively. This dataset only records the existing ratings, so we can also call it rating matrix and we will use interaction matrix and rating matrix interchangeably in case that the values of this matrix represent exact ratings. Most of the values in the rating matrix are unknown as users have not rated the majority of movies. We also show the sparsity of this dataset. The sparsity is defined as $\frac{1 - \text{number of nonzero entries}{\text{number of users} * \text{number of items}}$. Clearly, the interaction matrix is extremely sparse (i.e., sparsity = 93.695%). Real world datasets may suffer from a greater extent of sparsity and has been a long-standing challenge in building recommender systems. A viable solution is to use additional side information such as user/item features to alleviate the sparsity.
+We can see that each line consists of four columns, including "user id" $1$ to $943$, "item id" $1$ to $1682$, "rating" $1$ to $5$ and "timestamp". We can construct an interaction matrix of size $n \times m$, where $n$ and $m$ are the number of users and the number of items respectively. This dataset only records the existing ratings, so we can also call it rating matrix and we will use interaction matrix and rating matrix interchangeably in case that the values of this matrix represent exact ratings. Most of the values in the rating matrix are unknown as users have not rated the majority of movies. We also show the sparsity of this dataset. The sparsity is defined as $\frac{1 - \text{ number of nonzero entries}}{\text{number of users } * \text{ number of items}}$. Clearly, the interaction matrix is extremely sparse (i.e., sparsity = $93.695$%). Real world datasets may suffer from a greater extent of sparsity and has been a long-standing challenge in building recommender systems. A viable solution is to use additional side information such as user/item features to alleviate the sparsity.
 
-We then plot the distribution of the count of different ratings. As expected, it appears to be a normal distribution, with most ratings centered at 3-4.
+We then plot the distribution of the count of different ratings. As expected, it appears to be a normal distribution, with most ratings centered at $3$ to $4$.
 
 ```{.python .input  n=4}
 d2l.plt.hist(data['rating'], bins=5, ec='black')
@@ -62,7 +62,7 @@ d2l.plt.show()
 
 ## Splitting the dataset
 
-We split the dataset into training and test sets. The following function provides two split modes including `random` and `seq-aware`. In the `random` mode, the function splits the 100k interactions randomly without considering timestamp and uses the 90% of the data as training samples and the rest 10% as test samples by default. In the `seq-aware` mode, we leave out the item that a user rated most recently for test, and users' historical interactions as training set.  User historical interactions are sorted from oldest to newest based on timestamp. This mode will be used in the sequence-aware recommendation section.
+We split the dataset into training and test sets. The following function provides two split modes including `random` and `seq-aware`. In the `random` mode, the function splits the $100,000$ interactions randomly without considering timestamp and uses the 90% of the data as training samples and the rest 10% as test samples by default. In the `seq-aware` mode, we leave out the item that a user rated most recently for test, and users' historical interactions as training set.  User historical interactions are sorted from oldest to newest based on timestamp. This mode will be used in the sequence-aware recommendation section.
 
 ```{.python .input  n=5}
 #@save
@@ -94,7 +94,7 @@ Note that it is good practice to use a validation set in practice, apart from on
 
 ## Loading the data
 
-After dataset splitting, we will convert the training set and test set into lists and dictionaries/matrix for the sake of convenience. The following function reads the dataframe line by line and enumerates the index of users/items start from zero. The function then returns lists of users, items, ratings and a dictionary/matrix that records the interactions. We can specify the type of feedback to either `explicit` or `implicit`.
+After dataset splitting, we will convert the training set and test set into lists and dictionaries/matrix for the sake of convenience. The following function reads the dataframe line by line and enumerates the index of users/items start from zero. The function then returns lists of users, items, ratings and a dictionary/matrix that records the interactions. We can specify the type of feedback to either `explicit` or `implicit`. In the explicit mode, we record the exact score that a user grants to an item. While in the implicit mode, we only mark the event occurrence between a user and an item.
 
 ```{.python .input  n=6}
 #@save
@@ -114,7 +114,7 @@ def load_data_ml100k(data, num_users, num_items, feedback='explicit'):
     return users, items, scores, inter
 ```
 
-Afterwards, we put the above steps together and it will be used in the next section. The results are wrapped with `Dataset` and `DataLoader`. Note that the `last_batch` of `DataLoader` for training data is set to the `rollover` mode (The remaining samples are rolled over to the next epoch.) and orders are shuffled.
+Afterwards, we put the above steps together and it will be used in the next section. The results are wrapped with `Dataset` and `DataLoader`. Note that the `last_batch` of `DataLoader` for training data is set to the `rollover` mode (which means the remaining samples are rolled over to the next epoch) and orders are shuffled.
 
 ```{.python .input  n=7}
 #@save
@@ -141,14 +141,15 @@ def split_and_load_ml100k(split_mode='seq-aware', feedback='explicit',
 
 ## Summary
 
-* MovieLens datasets are widely used for recommendation research. It is public available and free to use.
+* The MovieLens dataset is widely used for recommendation research. It is public available and free to use.
 * We define functions to download and preprocess the MovieLens 100k dataset for further use in later sections.
 
 
 ## Exercises
 
-* What other similar recommendation datasets can you find?
-* Go through the [https://movielens.org/](https://movielens.org/) site for more information about MovieLens.
+* Can you find some other similar recommendation datasets?
+* From your answer to the previous question, can you compare the pros and cons between the different recommendation datasets?
+
 
 :begin_tab:`mxnet`
 [Discussions](https://discuss.d2l.ai/t/399)
