@@ -73,7 +73,7 @@ The game consists of a number of chaotic scenes
 bursting with activities.
 Waldo shows up somewhere in each,
 typically lurking in some unlikely location.
-The reader's goal is to locate him.
+The player's goal is to locate him.
 Despite his characteristic outfit,
 this can be surprisingly difficult,
 due to the large number of distractions.
