@@ -324,16 +324,11 @@ We turn to these issues in the remainder of the chapter.
 
 ## Exercises
 
-1. Assume that the size of the convolution kernel is $\Delta = 0$.
-   Show that in this case the convolution kernel
-   implements an MLP independently for each set of channels.
+1. Assume $\Delta = 0$in the convolution kernel :eqref:`eq_conv-layer`. Prove that in this case the convolution kernel implements an MLP independently for each set of channels.
 1. Why might translation invariance not be a good idea after all?
-1. What problems must we deal with when deciding how
-   to treat hidden representations corresponding to pixel locations
-   at the boundary of an image?
+1. What problems shall we deal with when deciding how to treat hidden representations corresponding to pixel locations at the boundary of an image?
 1. Describe an analogous convolutional layer for audio.
-1. Do you think that convolutional layers might also be applicable for text data?
-   Why or why not?
-1. Prove that $f * g = g * f$.
+1. Do you think that convolutional layers might also be applicable for text data? Why or why not?
+1. Prove $f * g = g * f$ in :eqref:`eq_2d-conv-discrete`.
 
 [Discussions](https://discuss.d2l.ai/t/64)
